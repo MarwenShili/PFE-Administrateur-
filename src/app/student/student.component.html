@@ -1,0 +1,108 @@
+<div class="container">
+
+    <h1>Add Student</h1>
+    <div class="pos">
+        <form #f="ngForm" (ngSubmit)="register(f)">
+            <!--input firstName-->
+
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <input class="uk-input" type="text" name="name" #name="ngModel" ngModel class="form-control"
+                        placeholder="NAME" style="width: 300px;" required>
+                    <p class="alert-danger" *ngIf="name.errors?.required && name.touched">this input Name
+                        is required</p>
+                </div>
+            </div>
+            <!--input location-->
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <input class="uk-input" type="text" name="homeLocation" #homeLocation="ngModel" ngModel class="form-control"
+                        placeholder="LOCATION" style="width: 300px;" required>
+                    <p class="alert-danger" *ngIf="homeLocation.errors?.required && homeLocation.touched">this input location
+                        is required</p>
+                </div>
+            </div>
+            <!--input age-->
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <input class="uk-input" type="number" name="age" #age="ngModel" ngModel class="form-control"
+                        placeholder="AGE" style="width: 300px;" required>
+                    <p class="alert-danger" *ngIf="age.errors?.required && age.touched">this input age
+                        is required</p>
+                </div>
+            </div>
+            <!--input Phone number-->
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <input class="uk-input" type="number" name="phone_number" #phone_number="ngModel" ngModel class="form-control"
+                        placeholder="PHONE" style="width: 300px;" required minlength="8">
+                    <p class="alert-danger" *ngIf="phone_number.errors?.required && phone_number.touched">this input number
+                        is required</p>
+                </div>
+            </div>
+            <!--input Sold-->
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <input class="uk-input" type="number" name="sold" #sold="ngModel" ngModel class="form-control"
+                        placeholder="SOLD" style="width: 300px;" required >
+                    <p class="alert-danger" *ngIf="sold.errors?.required && sold.touched">this input sold
+                        is required</p>
+                </div>
+            </div>
+            <!--Organizations-->
+            <div class="uk-inline">
+                <button class="uk-button uk-button-default" type="button">Organizations</button>
+                <button class="uk-button uk-button-default" type="button"><span
+                        uk-icon="icon:  triangle-down"></span></button>
+                <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
+                    <div class="form-group">
+                        <label for="options">Select Organizations:</label>
+                        <div *ngFor="let option of organizationsOptions">
+                            <label>
+                                <input type="checkbox" name="options" value="{{option.name}}"
+                                    [(ngModel)]="option.checked" />
+                                {{option.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--days-->
+            <div class="uk-inline">
+                <button class="uk-button uk-button-default" type="button">Days</button>
+                <button class="uk-button uk-button-default" type="button"><span
+                        uk-icon="icon:  triangle-down"></span></button>
+                <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
+                    <div class="form-group">
+                        <label for="options">Select days:</label>
+                        <div *ngFor="let option of options">
+                            <label>
+                                <input type="checkbox" name="options" value="{{option.name}}"
+                                    [(ngModel)]="option.checked" />
+                                {{option.name}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--image-->
+            <div class="uk-margin">
+                <div class="uk-inline">
+                    <input type="file" name="image" #image="ngModel" ngModel placeholder="Image" required>
+                    <p class="alert-danger" *ngIf="image.errors?.required && image.touched">this input image
+                        is required</p>
+                </div>
+            </div>
+            
+
+            <!--button-->
+            <button type="submit" class="btn btn-success" [disabled]="f.invalid" style="width:8%">ADD</button>
+
+
+
+
+        </form>
+    </div>
+</div>
